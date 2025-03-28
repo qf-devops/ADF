@@ -1,0 +1,60 @@
+Creating an Azure Data Factory (ADF) pipeline involves multiple steps, from setting up a data factory instance to configuring data sources, transformations, and scheduling triggers. Below is a step-by-step guide:
+
+Steps to Create an Azure Data Factory Pipeline
+1. Create an Azure Data Factory Instance
+1. Go to Azure Portal → Search for Data Factory.
+2. Click Create and provide:
+    * Subscription: Select your Azure subscription.
+    * Resource Group: Choose or create a new one.
+    * Region: Choose a data center location (e.g., East US).
+    * Name: Unique name for the ADF instance.
+    * Version: Choose V2 (latest version).
+3. Click Review + Create → Create.
+
+2. Access Azure Data Factory Studio
+1. Open the Azure Data Factory instance in the portal.
+2. Click Open Azure Data Factory Studio.
+
+3. Create a New Pipeline
+1. In the Author section, click + (New pipeline).
+2. Name your pipeline (e.g., CopyBlobToSQL).
+
+4. Add Source (Data Source)
+1. Click + (Add activity) → Select Copy Data.
+2. In Source settings:
+    * Click + New → Create a Linked Service for the source system (e.g., Azure Blob Storage).
+    * Configure storage account details and Test Connection.
+    * Choose the source file/container.
+    * Set Dataset (e.g., CSV, JSON).
+
+5. Add Destination (Sink)
+1. In Sink settings:
+    * Click + New → Create a Linked Service for the target system (e.g., Azure SQL Database, Data Lake, Synapse).
+    * Configure authentication (Managed Identity/Key Vault/SQL Auth).
+    * Select the destination table or storage location.
+    * Define Data Mapping (columns, types, formats).
+
+6. Configure Data Transformation (Optional)
+* Use Data Flow for transformations like:  Filtering, Aggregation, Sorting Joins, Merging, Derived Columns Conditional Splits, Lookups
+
+7. Add Pipeline Triggers
+1. Click Add Trigger → New/Edit.
+2. Choose:
+    * Manual Execution
+    * Scheduled (Daily, Hourly, CRON jobs)
+    * Event-Based (Blob Storage Events, Data Change Triggers)
+
+8. Debug & Publish
+1. Click Debug to test the pipeline.
+2. Click Publish All to deploy changes.
+
+9. Monitor & Manage Pipelines
+* Go to Monitor → Check pipeline runs, activity logs, and errors.
+* Configure Alerts & Logging via Azure Monitor, Log Analytics.
+
+ Example Use Case
+Use Case: Copy CSV from Blob Storage to SQL Database
+1. Source: CSV file in Azure Blob Storage.
+2. Transformation: Convert CSV fields into SQL table format.
+3. Destination: Load into Azure SQL Database.
+4. Schedule: Runs every hour via Trigger.
